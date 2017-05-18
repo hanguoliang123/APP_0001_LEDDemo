@@ -1,17 +1,16 @@
 package com.ecarx.hardlibrary;
 
-public class HardControl{
-
-    public static native int ledCtrl(int which,int status);
+public class HardControl {
+    public static native int ledCtrl(int which, int status);
     public static native int ledOpen();
     public static native void ledClose();
 
-    static{
-        try{
+    static {
+        try {
             System.loadLibrary("hardcontrol");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 }
