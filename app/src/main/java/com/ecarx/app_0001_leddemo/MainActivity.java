@@ -161,8 +161,10 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             //iLedService = ILedService.Stub.asInterface(ServiceManager.getService("led"));
-            Method getService = Class.forName("android.os.ServiceManage").getMethod("getService",String.class);
+            Method getService = Class.forName("android.os.ServiceManager").getMethod("getService",String.class);
             Object ledService = getService.invoke(null, "led");
+
+
             Method asInterface = Class.forName("android.os.ILedService$Stub").getMethod("asInterface", IBinder.class);
             proxy = asInterface.invoke(null, ledService);
             ledCtrl = Class.forName("android.os.ILedService$Stub$Proxy").getMethod("LedCtrl", int.class, int.class);
